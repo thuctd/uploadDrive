@@ -9,10 +9,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
     "now-build": "npm install"
   },
-  "author": "",
+  "author": "thucspc",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
