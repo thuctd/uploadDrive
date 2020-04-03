@@ -7,7 +7,6 @@ var app = express();
 var cors = require("cors");
 app.use(cors());
 
-
 const readline = require('readline');
 const { google } = require('googleapis');
 // If modifying these scopes, delete token.json.
@@ -16,8 +15,6 @@ const SCOPES = ['https://www.googleapis.com/auth/drive'];///-----
 // created automatically when the authorization flow completes for the first
 // time.
 const TOKEN_PATH = 'token.json';
-
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,7 +33,7 @@ app.post('/upload', function (req, res) {
     // if upload one file
     if (!Array.isArray(files.File)) {
       // `file` is the name of the <input> field of type `file`
-      console.log(files.file.path);
+      console.log(files.file);
       oldpath = files.file.path;
       newpath =  form.uploadDir + files.file.name;
       file_name=files.file.name;
@@ -153,7 +150,6 @@ app.post('/upload', function (req, res) {
           } else {
             console.log(`uploaded: ${file.data.id}`);
             res.send({url: `https://drive.google.com/uc?export=host&id=${file.data.id}`});
-
           }
         });
       }
