@@ -1,6 +1,10 @@
 {
   "name": "upload-drive",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.x"
+  },
+  "private": true,
   "description": "thucspc@gmail.com",
   "main": "index.js",
   "scripts": {
