@@ -21,6 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', (req, res) => {
+  res.send('123446');
+});
+
 // Upload route.
 app.post('/upload', function (req, res) {
   var form = new formidable.IncomingForm();
