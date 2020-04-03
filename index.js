@@ -7,6 +7,8 @@ var app = express();
 var cors = require("cors");
 app.use(cors());
 
+app.set('view engine', 'ejs');
+
 const readline = require('readline');
 const { google } = require('googleapis');
 // If modifying these scopes, delete token.json.
@@ -22,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.send('123446');
+  res.render('index.ejs');
 });
 
 // Upload route.

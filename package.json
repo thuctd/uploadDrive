@@ -11,8 +11,9 @@
   "private": true,
   "dependencies": {
     "cors": "^2.8.5",
-    "forever": "^1.0.0",
+    "ejs": "^3.0.2",
     "express": "^4.17.1",
+    "forever": "^1.0.0",
     "formidable": "^1.2.2",
     "googleapis": "^48.0.0"
   }
