@@ -37,9 +37,9 @@ app.post('/upload', function (req, res) {
   form.parse(req, function (err, fields, files) {
 
     // if upload one file
-    if (!Array.isArray(files.File)) {
+    if (!Array.isArray(files.file)) {
       // `file` is the name of the <input> field of type `file`
-      console.log(files.file);
+      // console.log(files.file);
       oldpath = files.file.path;
       newpath =  form.uploadDir + files.file.name;
       file_name=files.file.name;
@@ -142,7 +142,7 @@ app.post('/upload', function (req, res) {
         };
         var media = {
           mimeType: file_ext,
-          body: fs.createReadStream(path.join(__dirname, 'uploads/', file_name))
+          body: files.file.body
         };
         drive.files.create({
 
