@@ -31,45 +31,45 @@ app.get('/', (req, res) => {
 app.post('/upload', function (req, res) {
   var form = new formidable.IncomingForm();
   form.multiples = true; //enable mutiple for formidable
-  form.uploadDir = "uploads/";
+  // form.uploadDir = "uploads/";
   var n = [];
   var file_name, file_ext;
   form.parse(req, function (err, fields, files) {
 
-    // if upload one file
-    if (!Array.isArray(files.file)) {
-      // `file` is the name of the <input> field of type `file`
-      // console.log(files.file);
-      oldpath = files.file.path;
-      newpath =  form.uploadDir + files.file.name;
-      file_name=files.file.name;
-      file_ext=files.file.type;
-      fs.rename(oldpath, newpath, function (err) {
-      if (err) throw err;
-      // res.write('one file is upload !');
-      // res.end();
-      });
-    }
-    //end if
-    else {
-      for (let value of files.File) {
-        // `file` is the name of the <input> field of type `file`
-        console.log(files);
+    // // if upload one file
+    // if (!Array.isArray(files.file)) {
+    //   // `file` is the name of the <input> field of type `file`
+    //   // console.log(files.file);
+    //   oldpath = files.file.path;
+    //   newpath =  form.uploadDir + files.file.name;
+    //   file_name=files.file.name;
+    //   file_ext=files.file.type;
+    //   fs.rename(oldpath, newpath, function (err) {
+    //   if (err) throw err;
+    //   // res.write('one file is upload !');
+    //   // res.end();
+    //   });
+    // }
+    // //end if
+    // else {
+    //   for (let value of files.File) {
+    //     // `file` is the name of the <input> field of type `file`
+    //     console.log(files);
         
-        oldpath = value.path;
-        newpath = form.uploadDir + value.name;
-        n.push(new Object({
-          'file_name': value.name,
-          'file_type': value.type
-        }));
+    //     oldpath = value.path;
+    //     newpath = form.uploadDir + value.name;
+    //     n.push(new Object({
+    //       'file_name': value.name,
+    //       'file_type': value.type
+    //     }));
 
-        fs.rename(oldpath, newpath, function (err) {
-          if (err) throw err;
+    //     fs.rename(oldpath, newpath, function (err) {
+    //       if (err) throw err;
 
-          res.end('multiple upload success');
-        });
-      } //end for
-    }//end else
+    //       res.end('multiple upload success');
+    //     });
+    //   } //end for
+    // }//end else
     ///-------------------------------------------------------------------------
     ///
     // Load client secrets from a local file.
@@ -137,11 +137,11 @@ app.post('/upload', function (req, res) {
       //upload one file
       if (n.length == 0) {
         var fileMetadata = {
-          'name': file_name,
+          'name': files.file.name,
           parents: [targetFolderId]
         };
         var media = {
-          mimeType: file_ext,
+          mimeType: files.file.type,
           body: files.file.body
         };
         drive.files.create({
