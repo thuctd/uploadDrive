@@ -18,6 +18,10 @@ const SCOPES = ['https://www.googleapis.com/auth/drive'];///-----
 // time.
 const TOKEN_PATH = 'token.json';
 
+const CREDENTIALS = {
+  "installed":{"client_id":"838076898959-g0p9apaog09lk9l3hujkmlqd4n2fbsqe.apps.googleusercontent.com","project_id":"quickstart-1563872972741","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"icDOLAzEA4-JEORpFeuSj8fy","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -73,11 +77,14 @@ app.post('/upload', function (req, res) {
     ///-------------------------------------------------------------------------
     ///
     // Load client secrets from a local file.
-    fs.readFile('credentials.json', (err, content) => {
-      if (err) return console.log('Error loading client secret file:', err);
-      // Authorize a client with credentials, then call the Google Drive API.
-      authorize(JSON.parse(content), uploadFile);//------
-    });
+
+    // fs.readFile('credentials.json', (err, content) => {
+    //   if (err) return console.log('Error loading client secret file:', err);
+    //   // Authorize a client with credentials, then call the Google Drive API.
+    //   authorize(JSON.parse(content), uploadFile);//------
+    // });
+
+    authorize(CREDENTIALS, uploadFile);
 
     /**
      * Create an OAuth2 client with the given credentials, and then execute the
